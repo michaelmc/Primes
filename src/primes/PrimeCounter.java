@@ -58,7 +58,7 @@ public class PrimeCounter extends RecursiveTask<Integer> {
             result = n; 
         }
         // running the actual timings
-        for (int limit = 1000; limit < 1000000000; limit *= 10) {
+        for (int limit = 1000; limit < 100000000; limit *= 10) {
             long start = System.nanoTime();
             int n = countPrimes(1, limit);
             long finish = System.nanoTime();
@@ -77,7 +77,7 @@ public class PrimeCounter extends RecursiveTask<Integer> {
      * @param high The upper bound of numbers to test for primeness.
      * @return The number of prime numbers between the low and high bounds.
      */
-    private static int countPrimes(int low, int high) {
+    static int countPrimes(int low, int high) {
         return fjPool.invoke(new PrimeCounter(low, high));
     }
 
@@ -117,7 +117,7 @@ public class PrimeCounter extends RecursiveTask<Integer> {
      * @param n The integer to test for primeness.
      * @return True if the integer is prime.
      */
-    private static boolean isPrime(int n) {
+    static boolean isPrime(int n) {
         if (n == 1) return false;
         if (n == 2 || n == 3) return true;
         if (n % 2 == 0) return false;
