@@ -41,7 +41,7 @@ public class PrimeCounter extends RecursiveTask<Integer> {
      * 10,000
      * 100,000
      * 1,000,000
-     * 10,000,000
+     * 10,000,000 (the limit set by Dave in class and on Piazza)
      * 
      * Also times and prints the duration required to calculate those numbers.
      *  
@@ -88,17 +88,16 @@ public class PrimeCounter extends RecursiveTask<Integer> {
     protected Integer compute() {
         int count = 0;
         /*
-         *  I tried values from 100 to 1000 here, 250 was by a small margin
-         *  the fastest value for me.
+         *  I tried values from 100 to 1000 here; 250 was by a small margin
+         *  the fastest value.
          */
-        
         if (high - low <= 250) {
             for (int i = low; i < high; i++) {
                 if (isPrime(i)) count += 1;
             }
         } else {
             /* 
-             * I tried a number of ways of dividing the work, but none I tried 
+             * I tried a number of ways of dividing the work but none was 
              * significantly better than just dividing in half.
              */
             int divider = ((high - low) / 2) + low;
